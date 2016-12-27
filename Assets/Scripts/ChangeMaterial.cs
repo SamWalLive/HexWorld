@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ToGreen : MonoBehaviour
+public class ChangeMaterial : MonoBehaviour
 {
 
     public Material[] materials = new Material[3];
@@ -8,15 +8,15 @@ public class ToGreen : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Mouse Primary"))
+        if (Input.GetButton("Mouse Primary"))
         {
             MouseClick(materials[0]);
         }
-        else if (Input.GetButtonDown("Mouse Secondery"))
+        else if (Input.GetButton("Mouse Secondery"))
         {
             MouseClick(materials[1]);
         }
-        else if (Input.GetButtonDown("Mouse Wheel"))
+        else if (Input.GetButton("Mouse Wheel"))
         {
             MouseClick(materials[2]);
         }
@@ -30,7 +30,7 @@ public class ToGreen : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity , mask))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
         {
             hit.transform.gameObject.GetComponent<Renderer>().material = mat;
         }
