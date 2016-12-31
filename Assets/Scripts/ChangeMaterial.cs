@@ -1,29 +1,40 @@
 ﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
 
 public class ChangeMaterial : MonoBehaviour
 {
 
-    public Material[] materials = new Material[3];
+    public Dropdown dropdown;
+    public Material[] materials;
 
-    void Update()
+    private Material currentMaterial;
+    private int materialInt = 0;
+
+    void Start ()
+    {
+        currentMaterial = materials[materialInt];
+    }
+
+    void Update ()
     {
 
         if (Input.GetButton("Mouse Primary"))
         {
-            MouseClick(materials[0]);
+            MouseClick(currentMaterial);
         }
-        else if (Input.GetButton("Mouse Secondery"))
-        {
-            MouseClick(materials[1]);
-        }
-        else if (Input.GetButton("Mouse Wheel"))
-        {
-            MouseClick(materials[2]);
-        }
-
     }
 
-    void MouseClick(Material mat)
+    public void ValueChangeCheck ()
+    {
+        if(dropdown.value != materialInt)
+        {
+            materialInt = dropdown.value;
+            currentMaterial = materials[dropdown.value];
+        }
+    }
+
+    void MouseClick (Material mat)
     {
 
         int mask = 1 << 8;
