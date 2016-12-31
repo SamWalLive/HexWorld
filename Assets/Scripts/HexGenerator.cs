@@ -71,6 +71,7 @@ public class HexGenerator : MonoBehaviour {
         cloneHex.position.y = y;
         cloneHex.FillNeighbourPositions();
         cloneHex.name = "Hex(" + x.ToString() + "," + y.ToString() + ")";
+        cloneHex.RandomiseRotation();
     }
 
     bool ValidCoordinates(float x, float y)

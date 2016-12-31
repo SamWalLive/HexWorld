@@ -6,14 +6,14 @@ public class ChangeMaterial : MonoBehaviour
 {
 
     public Dropdown dropdown;
-    public Material[] materials;
+    public Sprite[] sprites;
 
-    private Material currentMaterial;
-    private int materialInt = 0;
+    private Sprite currentSprite;
+    private int spriteInt = 0;
 
     void Start ()
     {
-        currentMaterial = materials[materialInt];
+        currentSprite = sprites[spriteInt];
     }
 
     void Update ()
@@ -21,31 +21,33 @@ public class ChangeMaterial : MonoBehaviour
 
         if (Input.GetButton("Mouse Primary"))
         {
-            MouseClick(currentMaterial);
+            MouseClick(currentSprite);
         }
     }
 
     public void ValueChangeCheck ()
     {
-        if(dropdown.value != materialInt)
+        if(dropdown.value != spriteInt)
         {
-            materialInt = dropdown.value;
-            currentMaterial = materials[dropdown.value];
+            spriteInt = dropdown.value;
+            currentSprite = sprites[dropdown.value];
         }
     }
 
-    void MouseClick (Material mat)
+    void MouseClick (Sprite spr)
     {
 
         int mask = 1 << 8;
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, mask);
+        if (hit)
         {
-            hit.transform.gameObject.GetComponent<Renderer>().material = mat;
+            if (hit)
+            {
+                hit.transform.gameObject.GetComponent<SpriteRenderer>().sprite = spr;
+            }
         }
-
+        
     }
 
 }

@@ -36,4 +36,9 @@ public static class HexMetrics {
         new Vector2(-1f, 1f)
     };
 
+    public static float[] rotations =
+    {
+        -30, -90, -150, 30, 90, 150
+    };
+
 }
