@@ -33,12 +33,12 @@ public class Hex : MonoBehaviour
         }
         int mask = 1 << 8;
         Vector2 converted = CoordinatesToVector(neighbourPositions[position]);
-        Ray ray = new Ray(new Vector3(converted.x, converted.y, Camera.main.transform.position.z), Camera.main.transform.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+        RaycastHit2D hit = Physics2D.Raycast(converted, Vector2.zero, Mathf.Infinity, mask);
+        if (hit)
         {
             return hit.transform.gameObject.GetComponent<Hex>();
         }
+
         return null;
     }
 
