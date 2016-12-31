@@ -9,7 +9,7 @@ public class Hex : MonoBehaviour
 
     private Vector2[] neighbourPositions = new Vector2[6];
 
-    public void FillNeighbourPositions()
+    public void FillNeighbourPositions ()
     {
         for (int n = 0; n < 6; n++)
         {
@@ -17,7 +17,7 @@ public class Hex : MonoBehaviour
         }
     }
 
-    public void FillNeighbours()
+    public void FillNeighbours ()
     {
         for(int i = 0; i < 6; i++)
         {
@@ -42,9 +42,14 @@ public class Hex : MonoBehaviour
         return null;
     }
 
-    Vector2 CoordinatesToVector(Vector2 inp)
+    Vector2 CoordinatesToVector (Vector2 inp)
     {
         return new Vector2(inp.x * 1.5f, inp.y * (Mathf.Sqrt(3) * 0.5f));
+    }
+
+    public void RandomiseRotation ()
+    {
+        transform.rotation = Quaternion.Euler(0f, 0f, HexMetrics.rotations[Random.Range(0, 6)]);
     }
 
 }
