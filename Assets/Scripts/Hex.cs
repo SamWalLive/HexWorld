@@ -3,11 +3,17 @@
 public class Hex : MonoBehaviour
 {
 
-    public Vector2 position;
+    public HexGenerator controller;
 
+    public Vector2 position;
     public Hex[] neighbours = new Hex[6];
 
     private Vector2[] neighbourPositions = new Vector2[6];
+
+    void Start ()
+    {
+        controller = FindObjectOfType<HexGenerator>();
+    }
 
     public void FillNeighbourPositions ()
     {

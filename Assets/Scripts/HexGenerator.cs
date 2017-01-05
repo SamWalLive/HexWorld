@@ -5,6 +5,8 @@ public class HexGenerator : MonoBehaviour {
     public Vector2 size;
     public GameObject hex;
 
+    public Sprite[] sprites;
+
     bool ErrorCheck()
     {
         bool error = false;
@@ -31,7 +33,7 @@ public class HexGenerator : MonoBehaviour {
         return error;
     }
 
-    void Awake()
+    void Awake ()
     {
         if (ErrorCheck())
         {
@@ -43,7 +45,7 @@ public class HexGenerator : MonoBehaviour {
 
     }
 
-    void Generate()
+    void Generate ()
     {
         float x, y;
         for (x = -size.x; x <= size.x; x++)
@@ -62,7 +64,7 @@ public class HexGenerator : MonoBehaviour {
         }
     }
 
-    void GenerateHex(float x, float y)
+    void GenerateHex (float x, float y)
     {
         Vector2 position = new Vector2(x * 1.5f, y * Mathf.Sqrt(3f) * 0.5f);
         GameObject clone = (GameObject)Instantiate(hex, position, hex.transform.rotation, transform);
@@ -72,9 +74,10 @@ public class HexGenerator : MonoBehaviour {
         cloneHex.FillNeighbourPositions();
         cloneHex.name = "Hex(" + x.ToString() + "," + y.ToString() + ")";
         cloneHex.RandomiseRotation();
+        RandomiseSprite(cloneHex);
     }
 
-    bool ValidCoordinates(float x, float y)
+    bool ValidCoordinates (float x, float y)
     {
         if (x < 0)
             x *= -1;
@@ -103,6 +106,11 @@ public class HexGenerator : MonoBehaviour {
         }
 
         return false;
+    }
+
+    void RandomiseSprite (Hex clone)
+    {
+        clone.gameObject.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
     }
 
 }
