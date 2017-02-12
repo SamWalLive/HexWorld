@@ -66,7 +66,7 @@ public class HexGenerator : MonoBehaviour {
 
     void GenerateHex (float x, float y)
     {
-        Vector2 position = new Vector2(x * 1.5f, y * Mathf.Sqrt(3f) * 0.5f);
+        Vector2 position = new Vector2(x * 1.5f * HexMetrics.outerRadius, y * Mathf.Sqrt(3f) * 0.5f * HexMetrics.outerRadius);
         GameObject clone = (GameObject)Instantiate(hex, position, hex.transform.rotation, transform);
         Hex cloneHex = clone.GetComponent<Hex>();
         cloneHex.position.x = x;
