@@ -16,6 +16,8 @@ public class ClickController : MonoBehaviour {
             if (currentSelections != null && currentSelections.Length > 0)
             {
                 ChooseCurrentSelection();
+                if (currentSelection.GetComponentInParent<BuildingController>())
+                currentSelection.GetComponentInParent<BuildingController>().setTeam(Random.Range(0, currentSelection.GetComponentInParent<BuildingController>().teamSprites.Length));
             }
         }
 
@@ -28,6 +30,7 @@ public class ClickController : MonoBehaviour {
         List<Selection> crnt = new List<Selection>();
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, mask);
+
         if (hits == null || hits.Length == 0)
         {
             currentSelections = null;
@@ -54,15 +57,12 @@ public class ClickController : MonoBehaviour {
         int max = int.MaxValue;
         foreach (Selection select in currentSelections)
         {
-            Debug.Log(max.ToString());
-            Debug.Log(select.priority.ToString());
             if (select.priority < max)
             {
                 currentSelection = select;
                 max = currentSelection.priority;
             }
         }
-        Debug.Log("Selected: " + currentSelection.type);
     }
 
 }

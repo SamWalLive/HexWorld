@@ -3,13 +3,22 @@ using System.Collections;
 
 public class BuildingController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public int team;
+    public Sprite[] teamSprites;
+    public SpriteRenderer teamColour;
+
+    public void setTeam (int inp)
+    {
+        teamColour.sprite = teamSprites[inp];
+    }
+
+    void Start ()
+    {
 	
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 	
 	}
 }
