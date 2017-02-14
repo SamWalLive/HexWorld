@@ -7,6 +7,8 @@ public class BuildingController : MonoBehaviour {
     public Sprite[] teamSprites;
     public SpriteRenderer teamColour;
 
+    private PlayerController playerControl;
+
     public void setTeam (int inp)
     {
         teamColour.sprite = teamSprites[inp];
@@ -14,7 +16,9 @@ public class BuildingController : MonoBehaviour {
 
     void Start ()
     {
-	
+        playerControl = FindObjectOfType<PlayerController>();
+        team = playerControl.teamColour;
+        setTeam(team);
 	}
 	
 	void Update ()
