@@ -65,7 +65,7 @@ public class WorldController : MonoBehaviour
             {
                 GameObject temp = Instantiate(tile, transform);
                 temp.GetComponent<TileController>().coordinates = new Vector2(i, j);
-                temp.name = "Tile " + new Vector2(i, j).ToString();
+                temp.name = string.Format("Tile ({0},{1})", i, j);
             }
         }
 
