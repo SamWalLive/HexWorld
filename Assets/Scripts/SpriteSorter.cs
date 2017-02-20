@@ -25,7 +25,7 @@ public class SpriteSorter : MonoBehaviour {
     {
         foreach (SpriteRenderer sprite in sprites)
         {
-            sprite.sortingOrder = Mathf.RoundToInt(sprite.transform.position.y * 100) * -1;
+            sprite.sortingOrder = Mathf.RoundToInt(transform.position.y * 100) * -1;
         }
         
 	}

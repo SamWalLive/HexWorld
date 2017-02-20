@@ -99,8 +99,6 @@ public class TileController : MonoBehaviour
             childGroundCover.transform.localPosition = Vector3.zero;
             childGroundCover.layer = layer;
             childGroundCover.name = "Ground Cover: " + childGroundCover.name;
-            SpriteRenderer spr = childGroundCover.GetComponent<SpriteRenderer>();
-            Selection sel = childGroundCover.GetComponent<Selection>();
         }
     }
 
